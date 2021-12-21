@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="862.0" prefWidth="1445.0" style="-fx-background-color: #cbd2da;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerCozinha">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="862.0" prefWidth="1445.0" style="-fx-background-color: #cbd2da;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerCozinha">
    <children>
       <ComboBox layoutX="24.0" layoutY="181.0" prefHeight="80.0" prefWidth="419.0" promptText="PEDIDOS" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="772.0" />
       <TableView layoutX="467.0" layoutY="181.0" prefHeight="540.0" prefWidth="671.0" AnchorPane.bottomAnchor="31.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="181.0">
@@ -38,13 +37,13 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <TableView layoutX="209.0" layoutY="486.0" prefHeight="235.0" prefWidth="281.0" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="209.0" AnchorPane.topAnchor="486.0">
+      <TableView layoutX="68.0" layoutY="486.0" prefHeight="235.0" prefWidth="281.0" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="486.0">
         <columns>
           <TableColumn prefWidth="153.0" text="Nº Pedido" />
             <TableColumn prefWidth="127.0" text="Tempo de espera" />
         </columns>
       </TableView>
-      <Label alignment="CENTER" layoutX="257.0" layoutY="461.0" prefHeight="28.0" prefWidth="184.0" text="Em cofecção:">
+      <Label alignment="CENTER" layoutX="116.0" layoutY="461.0" prefHeight="28.0" prefWidth="184.0" text="Em cofecção:">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>

@@ -41,19 +41,19 @@ public class MainController {
         Image image = new Image(file.toURI().toString());
         IVLogo.setImage(image);
 
-        this.cbUser.getItems().addAll("Admin","Funcionario");
+        this.cbUser.getItems().addAll("Cozinha");
     }
     @FXML
     void login(ActionEvent event) {
         //Mudar password e ve de acordo com a bd
-        if(this.cbUser.getValue().equals("Admin") &&this.pfPassword.getText().equals("Admin123"))
+        if(this.cbUser.getValue().equals("Cozinha") &&this.pfPassword.getText().equals("C123"))
         {
             //Stage stage1 = (Stage) this.btnEntrar.getScene().getWindow();
             // stage1.close();
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/AdminView.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/CozinhaView.fxml"));
                 Parent root = loader.load();
-                Scene scene = new Scene(root);
+                Scene scene = new Scene(root,1400,900);
                 Stage stage = new Stage();
                 stage.setTitle("GESRES 1.0");
                 //stage.resizableProperty().setValue(Boolean.FALSE);
@@ -69,29 +69,7 @@ public class MainController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else if(this.cbUser.getValue().equals("Funcionario") &&this.pfPassword.getText().equals("123"))
-        {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/FuncViewMesas.fxml"));
-                Parent root = loader.load();
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setTitle("GESRES 1.0");
-                stage.resizableProperty().setValue(Boolean.FALSE);
-
-                //fecha vista de login ao entrar
-                Stage stage1 = (Stage) this.btnEntrar.getScene().getWindow();
-                stage1.close();
-
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.setScene(scene);
-                stage.show();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        else{
+        } else{
             alert(Alert.AlertType.ERROR,"Dados incorretos!","Nome de Utilizador ou Palavra-pass Incorreteos!");
         }
 
@@ -113,5 +91,4 @@ public class MainController {
         alerta.setContentText(texto);
         alerta.showAndWait();
     }
-
 }
