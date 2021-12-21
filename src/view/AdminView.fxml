@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="panePrincipal" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="919.0" style="-fx-background-color: #cbd2da;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerAdmin">
+   <children>
+      <MenuBar layoutY="128.0" prefHeight="25.0" prefWidth="919.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="128.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="STOCK">
+            <items>
+                  <MenuItem fx:id="MItemStock" mnemonicParsing="false" onAction="#showStock" text="Consultar Stock" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="RECEITAS">
+            <items>
+                  <MenuItem fx:id="MItemReceitas" mnemonicParsing="false" onAction="#showReceitas" text="Consultar Receitas" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="FATURAS">
+            <items>
+                  <MenuItem fx:id="MItemFaturasDiarias" mnemonicParsing="false" onAction="#showFaturasDiarias" text="Diárias" />
+              <MenuItem fx:id="MItemFaturasSemanal" mnemonicParsing="false" onAction="#showFaturasSemanal" text="Semanais" />
+                  <MenuItem fx:id="MItemFaturasMensal" mnemonicParsing="false" onAction="#showFaturasMensal" text="Mensais" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label layoutX="15.0" layoutY="200.0" text="ADICIONAR FUNCIONÁRIO:">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="242.0" text="Primeiro Nome:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField layoutX="15.0" layoutY="271.0" prefHeight="25.0" prefWidth="320.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="584.0" />
+      <Label layoutX="16.0" layoutY="301.0" text="Último Nome:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField layoutX="16.0" layoutY="333.0" prefHeight="25.0" prefWidth="320.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="584.0" />
+      <Label layoutX="15.0" layoutY="355.0" text="Idade:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField layoutX="15.0" layoutY="386.0" prefHeight="25.0" prefWidth="320.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="584.0" />
+      <Label layoutX="14.0" layoutY="411.0" text="Sexo:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="15.0" layoutY="443.0" prefHeight="25.0" prefWidth="320.0" style="-fx-background-color: #035d86;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="584.0" />
+      <Button layoutX="18.0" layoutY="570.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="201.0" style="-fx-background-color: #035d86;" text="Adicionar" textFill="#cbd2da">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font></Button>
+      <TableView layoutX="496.0" layoutY="200.0" prefHeight="397.0" prefWidth="544.0" AnchorPane.bottomAnchor="103.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="200.0">
+        <columns>
+          <TableColumn prefWidth="192.0" style="-fx-background-color: #035d86;" text="Funcionário" />
+          <TableColumn prefWidth="191.0" style="-fx-background-color: #035d86;" text="Atividade" />
+            <TableColumn prefWidth="160.0" style="-fx-background-color: #035d86;" text="Numero de Funcionário" />
+        </columns>
+      </TableView>
+      <AnchorPane prefHeight="128.0" prefWidth="919.0" style="-fx-background-color: #033249;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="IVLogo" fitHeight="128.0" fitWidth="203.0" layoutX="-2.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../logo.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="283.0" layoutY="35.0" prefHeight="59.0" prefWidth="354.0" text="ADMINISTRADOR" textFill="#cbd2da" AnchorPane.leftAnchor="283.0" AnchorPane.rightAnchor="282.0">
+               <font>
+                  <Font name="System Bold" size="41.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="15.0" layoutY="468.0" text="Numero de Funcionário:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField layoutX="18.0" layoutY="500.0" prefHeight="25.0" prefWidth="320.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="581.0" />
+   </children>
+</AnchorPane>

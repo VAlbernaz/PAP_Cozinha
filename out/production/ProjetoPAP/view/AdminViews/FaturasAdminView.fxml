@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="paneStock" prefHeight="899.0" prefWidth="1212.0" style="-fx-background-color: #cbd2da;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="128.0" prefWidth="919.0" style="-fx-background-color: #033249;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="IVLogo1" fitHeight="128.0" fitWidth="203.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="299.0" layoutY="37.0" text="ADMINISTRADOR" textFill="#cbd2da">
+               <font>
+                  <Font name="System Bold" size="38.0" />
+               </font>
+            </Label>
+            <Button layoutX="146.0" layoutY="92.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="214.0" style="-fx-background-color: #033249;" text="..\ADIMINISTRADOR\STOCK" textFill="#cbd2da">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <TableView layoutX="31.0" layoutY="203.0" prefHeight="441.0" prefWidth="458.0" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="203.0">
+         <columns>
+            <TableColumn prefWidth="110.0" text="Data" />
+            <TableColumn minWidth="0.0" prefWidth="164.0" text="Número do Pedido" />
+            <TableColumn prefWidth="183.0" text="Valor do pedido" />
+         </columns>
+      </TableView>
+      <Label layoutX="206.0" layoutY="154.0" text="Faturas">
+         <font>
+            <Font name="System Bold" size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="493.0" layoutY="414.0" text="(Selecione o Pedido que pertende consultar)">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
+      <Button layoutX="489.0" layoutY="430.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="224.0" style="-fx-background-color: #033249;" text="Consultar &gt;" textFill="#cbd2da">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+      <TableView layoutX="712.0" layoutY="207.0" prefHeight="524.0" prefWidth="486.0">
+         <columns>
+            <TableColumn prefWidth="333.0" text="Produto" />
+            <TableColumn minWidth="0.0" prefWidth="69.0" text="QTD" />
+            <TableColumn prefWidth="83.0" text="Valor" />
+         </columns>
+      </TableView>
+      <Label layoutX="901.0" layoutY="154.0" text="Pedido">
+         <font>
+            <Font name="System Bold" size="34.0" />
+         </font>
+      </Label>
+      <Button layoutX="489.0" layoutY="566.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="224.0" style="-fx-background-color: #033249;" text="Limpar Tabela" textFill="#cbd2da">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Button>
+      <Label layoutX="731.0" layoutY="745.0" text="Funcionário:">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <TextField layoutX="730.0" layoutY="784.0" prefHeight="25.0" prefWidth="449.0" />
+      <Label layoutX="731.0" layoutY="809.0" text="Contribuinte:">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <TextField layoutX="730.0" layoutY="848.0" prefHeight="25.0" prefWidth="449.0" />
+      <MenuBar layoutY="128.0" prefHeight="25.0" prefWidth="1212.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="STOCK">
+               <items>
+                  <MenuItem fx:id="MItemStock" mnemonicParsing="false"  text="Consultar Stock" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="RECEITAS">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Consultar Receitas" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="FATURAS">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Diárias" />
+                  <MenuItem mnemonicParsing="false" text="Semanais" />
+                  <MenuItem mnemonicParsing="false" text="Mensais" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

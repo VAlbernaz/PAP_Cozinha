@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="385.0" prefWidth="396.0" style="-fx-background-color: #cbd2da;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerCodigoFunc">
+   <children>
+      <AnchorPane prefHeight="118.0" prefWidth="396.0" style="-fx-background-color: #033249;">
+         <children>
+            <Label alignment="CENTER" layoutX="105.0" layoutY="35.0" prefHeight="59.0" prefWidth="291.0" text="FUNCIONÁRIO" textFill="#cbd2da" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="IVLogo" fitHeight="128.0" fitWidth="203.0" layoutX="-2.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <TextField layoutX="48.0" layoutY="218.0" prefHeight="59.0" prefWidth="300.0" />
+      <Label layoutX="300.0" layoutY="363.0" prefHeight="17.0" prefWidth="96.0" text="Pedido:" />
+      <Label layoutX="31.0" layoutY="169.0" prefHeight="47.0" prefWidth="335.0" text="Código do funcionário:">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Button layoutX="63.0" layoutY="285.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="272.0" style="-fx-background-color: #035d86;" text="Concluir" textFill="#cbd2da">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

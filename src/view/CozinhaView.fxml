@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="862.0" prefWidth="1445.0" style="-fx-background-color: #cbd2da;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerCozinha">
+   <children>
+      <ComboBox layoutX="24.0" layoutY="181.0" prefHeight="80.0" prefWidth="419.0" promptText="PEDIDOS" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="772.0" />
+      <TableView layoutX="467.0" layoutY="181.0" prefHeight="540.0" prefWidth="671.0" AnchorPane.bottomAnchor="31.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="181.0">
+        <columns>
+          <TableColumn prefWidth="265.0" text="Produto(s)" />
+          <TableColumn minWidth="4.0" prefWidth="67.0" text="QTD" />
+            <TableColumn prefWidth="337.0" text="Observações" />
+        </columns>
+      </TableView>
+      <TextField layoutX="526.0" layoutY="156.0" prefHeight="25.0" prefWidth="671.0" text="Pedido nº:" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="156.0" />
+      <Button layoutX="395.0" layoutY="492.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="119.0" style="-fx-background-color: #035d86;" text="Finalizar" textFill="#cbd2da" AnchorPane.rightAnchor="701.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="395.0" layoutY="666.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="119.0" style="-fx-background-color: #035d86;" text="Ver Detalhes" textFill="#cbd2da" AnchorPane.rightAnchor="701.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="631.0" layoutY="128.0" prefHeight="28.0" prefWidth="184.0" text="Detalhes:" AnchorPane.rightAnchor="181.0" AnchorPane.topAnchor="128.0">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <TableView layoutX="209.0" layoutY="486.0" prefHeight="235.0" prefWidth="281.0" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="209.0" AnchorPane.topAnchor="486.0">
+        <columns>
+          <TableColumn prefWidth="153.0" text="Nº Pedido" />
+            <TableColumn prefWidth="127.0" text="Tempo de espera" />
+        </columns>
+      </TableView>
+      <Label alignment="CENTER" layoutX="257.0" layoutY="461.0" prefHeight="28.0" prefWidth="184.0" text="Em cofecção:">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <AnchorPane prefHeight="128.0" prefWidth="996.0" style="-fx-background-color: #033249;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="IVLogo" fitHeight="128.0" fitWidth="203.0" layoutX="-2.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../logo.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="283.0" layoutY="35.0" prefHeight="59.0" prefWidth="354.0" text="COZINHA" textFill="#cbd2da" AnchorPane.leftAnchor="283.0" AnchorPane.rightAnchor="282.0">
+               <font>
+                  <Font name="System Bold" size="41.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
