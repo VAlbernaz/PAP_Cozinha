@@ -37,10 +37,9 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <TableView layoutX="68.0" layoutY="486.0" prefHeight="235.0" prefWidth="281.0" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="486.0">
+      <TableView layoutX="68.0" layoutY="489.0" prefHeight="235.0" prefWidth="281.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="489.0">
         <columns>
-          <TableColumn prefWidth="153.0" text="Nº Pedido" />
-            <TableColumn prefWidth="127.0" text="Tempo de espera" />
+          <TableColumn prefWidth="280.0" text="Nº Pedido" />
         </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="116.0" layoutY="461.0" prefHeight="28.0" prefWidth="184.0" text="Em cofecção:">
