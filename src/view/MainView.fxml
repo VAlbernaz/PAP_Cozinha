@@ -17,7 +17,7 @@
          </font></Button>
       <AnchorPane prefHeight="128.0" prefWidth="419.0" style="-fx-background-color: #033249;">
          <children>
-            <ImageView fx:id="IVLogo" fitHeight="128.0" fitWidth="203.0" layoutX="137.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="IVLogo" fitHeight="128.0" fitWidth="161.0" layoutX="137.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../logo.png" />
                </image>
