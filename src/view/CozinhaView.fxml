@@ -22,12 +22,12 @@
         </columns>
       </TableView>
       <TextField layoutX="526.0" layoutY="156.0" prefHeight="25.0" prefWidth="671.0" text="Pedido nº:" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="156.0" />
-      <Button layoutX="395.0" layoutY="492.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="119.0" style="-fx-background-color: #035d86;" text="Finalizar" textFill="#cbd2da" AnchorPane.rightAnchor="701.0">
+      <Button layoutX="395.0" layoutY="492.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="137.0" style="-fx-background-color: #035d86;" text="Finalizar" textFill="#cbd2da" AnchorPane.rightAnchor="701.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="395.0" layoutY="666.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="119.0" style="-fx-background-color: #035d86;" text="Ver Detalhes" textFill="#cbd2da" AnchorPane.rightAnchor="701.0">
+      <Button layoutX="395.0" layoutY="666.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="137.0" style="-fx-background-color: #035d86;" text="Ver Detalhes" textFill="#cbd2da" AnchorPane.rightAnchor="701.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -59,6 +59,7 @@
                   <Font name="System Bold" size="41.0" />
                </font>
             </Label>
+            <Button fx:id="btnFecharCozinha" layoutX="1163.0" layoutY="43.0" mnemonicParsing="false" onAction="#fechar" prefHeight="47.0" prefWidth="146.0" style="-fx-background-color: #FE2E2E;" text="Fechar Cozinha" />
          </children>
       </AnchorPane>
    </children>

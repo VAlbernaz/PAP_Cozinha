@@ -23,8 +23,6 @@ public class Main extends Application {
         primaryStage.resizableProperty().setValue(Boolean.FALSE);
         //primaryStage.setMaximized(true);
         primaryStage.setScene(new Scene(root));
-
-
         primaryStage.show();
 
     }
