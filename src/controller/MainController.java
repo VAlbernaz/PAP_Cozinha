@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,7 +47,7 @@ public class MainController {
     @FXML
     void login(ActionEvent event) {
         //Mudar password e ve de acordo com a bd
-        if(this.cbUser.getValue().equals("Cozinha") &&this.pfPassword.getText().equals("C123"))
+        if(this.cbUser.getValue().equals("Cozinha") &&this.pfPassword.getText().equals("123"))
         {
             //Stage stage1 = (Stage) this.btnEntrar.getScene().getWindow();
             // stage1.close();
@@ -56,6 +57,7 @@ public class MainController {
                 Scene scene = new Scene(root,1400,900);
                 Stage stage = new Stage();
                 stage.setTitle("GESRES 1.0");
+                stage.initStyle(StageStyle.UNDECORATED);
                 //stage.resizableProperty().setValue(Boolean.FALSE);
 
                 //fecha vista de login ao entrar

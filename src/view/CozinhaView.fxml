@@ -13,21 +13,21 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="862.0" prefWidth="1445.0" style="-fx-background-color: #cbd2da;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerCozinha">
    <children>
-      <ComboBox layoutX="24.0" layoutY="181.0" prefHeight="80.0" prefWidth="419.0" promptText="PEDIDOS" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="772.0" />
-      <TableView layoutX="467.0" layoutY="181.0" prefHeight="540.0" prefWidth="671.0" AnchorPane.bottomAnchor="31.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="181.0">
+      <ComboBox fx:id="cbNpedidos" layoutX="24.0" layoutY="181.0" prefHeight="80.0" prefWidth="419.0" promptText="PEDIDOS" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="772.0" />
+      <TableView fx:id="tblDetalhes" layoutX="467.0" layoutY="181.0" prefHeight="540.0" prefWidth="671.0" AnchorPane.bottomAnchor="31.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="181.0">
         <columns>
-          <TableColumn prefWidth="265.0" text="Produto(s)" />
-          <TableColumn minWidth="4.0" prefWidth="67.0" text="QTD" />
-            <TableColumn prefWidth="337.0" text="Observações" />
+          <TableColumn fx:id="colProduto" prefWidth="265.0" text="Produto(s)" />
+          <TableColumn fx:id="colQTD" minWidth="4.0" prefWidth="67.0" text="QTD" />
+            <TableColumn fx:id="colOBS" prefWidth="337.0" text="Observações" />
         </columns>
       </TableView>
-      <TextField layoutX="526.0" layoutY="156.0" prefHeight="25.0" prefWidth="671.0" text="Pedido nº:" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="156.0" />
-      <Button layoutX="395.0" layoutY="492.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="137.0" style="-fx-background-color: #035d86;" text="Finalizar" textFill="#cbd2da" AnchorPane.rightAnchor="701.0">
+      <TextField fx:id="tfNpedidos" layoutX="526.0" layoutY="156.0" prefHeight="25.0" prefWidth="671.0" text="Pedido nº:" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="156.0" />
+      <Button fx:id="btnFinalizar" layoutX="395.0" layoutY="492.0" mnemonicParsing="false" onAction="#finalizarPedido" prefHeight="47.0" prefWidth="137.0" style="-fx-background-color: #035d86;" text="Finalizar" textFill="#cbd2da" AnchorPane.rightAnchor="701.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="395.0" layoutY="666.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="137.0" style="-fx-background-color: #035d86;" text="Ver Detalhes" textFill="#cbd2da" AnchorPane.rightAnchor="701.0">
+      <Button fx:id="btnDetalhes" layoutX="395.0" layoutY="666.0" mnemonicParsing="false" onAction="#verDetalhesPedido" prefHeight="47.0" prefWidth="137.0" style="-fx-background-color: #035d86;" text="Ver Detalhes" textFill="#cbd2da" AnchorPane.rightAnchor="701.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -37,9 +37,9 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <TableView layoutX="68.0" layoutY="489.0" prefHeight="235.0" prefWidth="281.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="489.0">
+      <TableView fx:id="tblNpedidos" layoutX="68.0" layoutY="489.0" prefHeight="235.0" prefWidth="281.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="489.0">
         <columns>
-          <TableColumn prefWidth="280.0" text="Nº Pedido" />
+          <TableColumn fx:id="colNpedidos" prefWidth="280.0" text="Nº Pedido" />
         </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="116.0" layoutY="461.0" prefHeight="28.0" prefWidth="184.0" text="Em cofecção:">
@@ -59,8 +59,16 @@
                   <Font name="System Bold" size="41.0" />
                </font>
             </Label>
-            <Button fx:id="btnFecharCozinha" layoutX="1163.0" layoutY="43.0" mnemonicParsing="false" onAction="#fechar" prefHeight="47.0" prefWidth="146.0" style="-fx-background-color: #FE2E2E;" text="Fechar Cozinha" />
+            <Button fx:id="btnFecharCozinha" layoutX="1199.0" layoutY="35.0" mnemonicParsing="false" onAction="#fechar" prefHeight="59.0" prefWidth="197.0" style="-fx-background-color: #FE2E2E;" text="Fechar Cozinha">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Button>
          </children>
       </AnchorPane>
+      <Label alignment="CENTER" layoutX="-24.0" layoutY="155.0" prefHeight="28.0" prefWidth="184.0" text="Pedidos:">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
