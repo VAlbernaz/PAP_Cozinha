@@ -15,7 +15,6 @@ import java.io.File;
 import java.sql.ResultSet;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.*;
 
 public class ControllerCozinha {
 
@@ -49,11 +48,19 @@ public class ControllerCozinha {
     @FXML
     private TextField tfNpedidos;
 
+    @FXML
+    private Button btnAbrirPedido;
+
     private ObservableList<Pedidos> detalhesPedidos;
+    private ObservableList<Pedidos> pedidosConfeção;
 
     private MySQlConnection connection;
 
+    private Pedidos linhaPedido;
+
     String str = null;
+    int idpedidotf =0;
+    int idpedido = 0;
 
     public static final long TEMPO = (1000 * 1); // atualiza a cada 1 segundo
 
@@ -64,13 +71,18 @@ public class ControllerCozinha {
         IVLogo.setImage(image);
 
         detalhesPedidos = FXCollections.observableArrayList();
+        pedidosConfeção = FXCollections.observableArrayList();
 
         this.colProduto.setCellValueFactory(new PropertyValueFactory<Pedidos,String>("produto"));
         this.colQTD.setCellValueFactory(new PropertyValueFactory<Pedidos,String>("qtd"));
         this.colOBS.setCellValueFactory(new PropertyValueFactory<Pedidos,String>("obs"));
 
+        this.colNpedidos.setCellValueFactory(new PropertyValueFactory<Pedidos,String>("idpedido"));
+
+
         str = this.tfNpedidos.getText();
         preencheComboBox();
+        preecheTabelaPedidos();
         //preenchePedidos();
     }
 
@@ -113,35 +125,92 @@ public class ControllerCozinha {
 
     @FXML
     void finalizarPedido(ActionEvent event) {
+        linhaPedido = this.tblNpedidos.getSelectionModel().getSelectedItem();
+        if(linhaPedido != null) {
+            int idpedidofinalizar = linhaPedido.getIdpedido();
+            connection = new MySQlConnection();
+            if (connection.alteraEstado(idpedidofinalizar, "Fechado")) {
+                alert(Alert.AlertType.INFORMATION, "Sucesso!", "Pedido finalizado com sucesso.");
 
+                this.tblNpedidos.getItems().clear();
+                preecheTabelaPedidos();
+
+                if(idpedidotf == idpedidofinalizar)
+                {
+                    this.tblDetalhes.getItems().clear();
+                    this.tfNpedidos.setText(str);
+                }
+            } else {
+                alert(Alert.AlertType.WARNING, "Atenção!", "Aconteceu um erro.");
+            }
+        }else
+        {
+            alert(Alert.AlertType.ERROR,"ERRO!","Selecione um pedido.");
+        }
     }
 
     @FXML
     void verDetalhesPedido(ActionEvent event) {
-        this.tblDetalhes.getItems().clear();
+        linhaPedido = this.tblNpedidos.getSelectionModel().getSelectedItem();
+        int idpedidoDetalhes = linhaPedido.getIdpedido();
 
+        ResultSet result = connection.detalhesPedidos(idpedidoDetalhes);
         try {
-            int idpedido = this.cbNpedidos.getValue();
-            connection = new MySQlConnection();
-            ResultSet result = connection.detalhesPedidos(idpedido);
-                while(result.next()) {
-                    String produto = result.getString(1);
-                    int qtd = result.getInt(2);
-                    String obs = result.getString(3);
+            while (result.next()) {
+                String produto = result.getString(1);
+                int qtd = result.getInt(2);
+                String obs = result.getString(3);
+                Pedidos p = new Pedidos(produto, qtd, obs, idpedidoDetalhes);
+                this.detalhesPedidos.add(p);
+            }
+        }catch (Exception e)
+        {
 
-                    Pedidos p = new Pedidos(produto,qtd,obs,idpedido);
-                    this.detalhesPedidos.add(p);
-                }
+        }
+        this.tblDetalhes.setItems(detalhesPedidos);
+        this.tfNpedidos.setText(str + idpedidoDetalhes);
+        this.tblNpedidos.getSelectionModel().clearSelection();
+    }
 
-            this.tfNpedidos.setText(str + idpedido);
+    public void preecheTabelaPedidos()
+    {
+        connection = new MySQlConnection();
 
-
-            }catch (Exception e)
+        ResultSet result = connection.numPedidosEmConfeção();
+        try {
+            while (result.next())
             {
-                alert(Alert.AlertType.WARNING,"Numero de pedido nao selecionado!","Por favor, selecione um numero do pedido desejado!");
+                int idpedido = result.getInt(1);
+                Pedidos p = new Pedidos(idpedido);
+                pedidosConfeção.add(p);
+            }
+        }catch (Exception e)
+        {
+
+        }
+        this.tblNpedidos.setItems(pedidosConfeção);
+    }
+
+    @FXML
+    void abrirPedido(ActionEvent event) {
+            try {
+                idpedido = this.cbNpedidos.getValue();
+                if(idpedido != 0) {
+                    idpedidotf = idpedido;
+                    connection = new MySQlConnection();
+
+                    connection.alteraEstado(idpedido, "Em confeção");
+                    preecheTabelaPedidos();
+                    preencheComboBox();
+                }else
+                {
+                    alert(Alert.AlertType.WARNING, "Numero de pedido nao selecionado!", "Por favor, selecione um numero do pedido desejado!");
+                }
+            } catch (Exception e) {
+                alert(Alert.AlertType.WARNING, "Numero de pedido nao selecionado!", "Por favor, selecione um numero do pedido desejado!");
             }
 
-             this.tblDetalhes.setItems(detalhesPedidos);
+
     }
 
     public void alert(Alert.AlertType type, String tit, String texto)

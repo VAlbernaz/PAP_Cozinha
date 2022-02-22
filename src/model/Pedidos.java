@@ -6,6 +6,11 @@ public class Pedidos {
     private String obs;
     private int idpedido;
 
+
+    public Pedidos(int idpedido) {
+        this.idpedido = idpedido;
+    }
+
     public Pedidos(String produto, int qtd, String obs, int idpedido) {
         this.produto = produto;
         this.qtd = qtd;

@@ -35,7 +35,7 @@ public class MySQlConnection {
         ResultSet result=null;
         String sql = "SELECT idpedidos \n" +
                 "FROM pedidoscozinha \n" +
-                "WHERE estado = 'True'\n" +
+                "WHERE estado = 'Enviado'\n" +
                 "GROUP BY idpedidos;";
         try {
             Statement s = connection.createStatement();
@@ -53,6 +53,42 @@ public class MySQlConnection {
                 "FROM produto p, pedidoscozinha pc\n" +
                 "WHERE pc.idproduto = p.idproduto\n" +
                 "AND pc.idpedidos ="+numPedido+";";
+        try {
+            Statement s = connection.createStatement();
+            result = s.executeQuery(sql);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return  result;
+    }
+     public boolean alteraEstado(int idpedido, String estado)
+     {
+         try{
+             String sql = "UPDATE pedidoscozinha SET estado =\""+estado+"\" WHERE idpedidos ="+idpedido+";";
+
+             PreparedStatement statement = connection.prepareStatement(sql);
+
+
+
+             int linhas = statement.executeUpdate();
+             if (linhas == 1) {
+                 return true;
+
+             } else return false;
+
+
+         } catch (SQLException throwables) {
+             throwables.printStackTrace();
+             return false;
+         }
+     }
+     public ResultSet numPedidosEmConfeção()
+    {
+        ResultSet result=null;
+        String sql = "SELECT idpedidos \n" +
+                "FROM pedidoscozinha \n" +
+                "WHERE estado = 'Em confeção'\n" +
+                "GROUP BY idpedidos;";
         try {
             Statement s = connection.createStatement();
             result = s.executeQuery(sql);
