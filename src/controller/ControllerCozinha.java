@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -62,7 +63,7 @@ public class ControllerCozinha {
     int idpedidotf =0;
     int idpedido = 0;
 
-    public static final long TEMPO = (1000 * 1); // atualiza a cada 1 segundo
+    public static final long TEMPO = (1000 * 5); // atualiza a cada 5 segundo
 
     public void initialize() throws Exception {
         //Colocar logotipo
@@ -79,11 +80,13 @@ public class ControllerCozinha {
 
         this.colNpedidos.setCellValueFactory(new PropertyValueFactory<Pedidos,String>("idpedido"));
 
-
         str = this.tfNpedidos.getText();
+        this.tblDetalhes.getItems().clear();
+        this.tfNpedidos.setText(str);
+
         preencheComboBox();
         preecheTabelaPedidos();
-        //preenchePedidos();
+        preenchePedidos();
     }
 
     public void preenchePedidos() throws Exception {
@@ -93,11 +96,13 @@ public class ControllerCozinha {
             timer = new Timer();
             TimerTask tarefa = new TimerTask() {
                 public void run() {
-                    try {
-                        preencheComboBox();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    Platform.runLater(() -> {
+                        try {
+                            preencheComboBox();
+                        } catch (Exception e) {
+
+                        }
+                    });
                 }
             };
             timer.scheduleAtFixedRate(tarefa, TEMPO, TEMPO);
@@ -152,24 +157,28 @@ public class ControllerCozinha {
     @FXML
     void verDetalhesPedido(ActionEvent event) {
         linhaPedido = this.tblNpedidos.getSelectionModel().getSelectedItem();
-        int idpedidoDetalhes = linhaPedido.getIdpedido();
-
-        ResultSet result = connection.detalhesPedidos(idpedidoDetalhes);
-        try {
-            while (result.next()) {
-                String produto = result.getString(1);
-                int qtd = result.getInt(2);
-                String obs = result.getString(3);
-                Pedidos p = new Pedidos(produto, qtd, obs, idpedidoDetalhes);
-                this.detalhesPedidos.add(p);
+        if(linhaPedido != null) {
+            this.tblDetalhes.getItems().clear();
+            int idpedidoDetalhes = linhaPedido.getIdpedido();
+            idpedidotf = idpedidoDetalhes;
+            ResultSet result = connection.detalhesPedidos(idpedidoDetalhes);
+            try {
+                while (result.next()) {
+                    String produto = result.getString(1);
+                    int qtd = result.getInt(2);
+                    String obs = result.getString(3);
+                    Pedidos p = new Pedidos(produto, qtd, obs, idpedidoDetalhes);
+                    this.detalhesPedidos.add(p);
+                }
+            } catch (Exception e) {
+                alert(Alert.AlertType.WARNING, "Numero de pedido nao selecionado!", "Por favor, selecione um numero do pedido desejado!");
             }
-        }catch (Exception e)
-        {
-
+            this.tblDetalhes.setItems(detalhesPedidos);
+            this.tfNpedidos.setText(str + idpedidotf);
+            this.tblNpedidos.getSelectionModel().clearSelection();
+        }else {
+            alert(Alert.AlertType.WARNING, "Numero de pedido nao selecionado!", "Por favor, selecione um numero do pedido desejado!");
         }
-        this.tblDetalhes.setItems(detalhesPedidos);
-        this.tfNpedidos.setText(str + idpedidoDetalhes);
-        this.tblNpedidos.getSelectionModel().clearSelection();
     }
 
     public void preecheTabelaPedidos()
@@ -177,18 +186,20 @@ public class ControllerCozinha {
         connection = new MySQlConnection();
 
         ResultSet result = connection.numPedidosEmConfeção();
+        int idpedido = 0;
         try {
             while (result.next())
             {
-                int idpedido = result.getInt(1);
+                idpedido = result.getInt(1);
                 Pedidos p = new Pedidos(idpedido);
                 pedidosConfeção.add(p);
             }
         }catch (Exception e)
         {
-
+            e.printStackTrace();
         }
         this.tblNpedidos.setItems(pedidosConfeção);
+
     }
 
     @FXML
@@ -200,17 +211,34 @@ public class ControllerCozinha {
                     connection = new MySQlConnection();
 
                     connection.alteraEstado(idpedido, "Em confeção");
+                    this.tblNpedidos.getItems().clear();
                     preecheTabelaPedidos();
                     preencheComboBox();
                 }else
                 {
                     alert(Alert.AlertType.WARNING, "Numero de pedido nao selecionado!", "Por favor, selecione um numero do pedido desejado!");
+
                 }
             } catch (Exception e) {
                 alert(Alert.AlertType.WARNING, "Numero de pedido nao selecionado!", "Por favor, selecione um numero do pedido desejado!");
             }
-
-
+            if(idpedido!=0) {
+                ResultSet result = connection.detalhesPedidos(idpedido);
+                this.tblDetalhes.getItems().clear();
+                try {
+                    while (result.next()) {
+                        String produto = result.getString(1);
+                        int qtd = result.getInt(2);
+                        String obs = result.getString(3);
+                        Pedidos p = new Pedidos(produto, qtd, obs, idpedido);
+                        this.detalhesPedidos.add(p);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                this.tblDetalhes.setItems(detalhesPedidos);
+                this.tfNpedidos.setText(str + idpedido);
+            }
     }
 
     public void alert(Alert.AlertType type, String tit, String texto)
