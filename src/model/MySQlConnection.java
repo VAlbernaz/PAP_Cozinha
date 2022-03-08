@@ -23,7 +23,7 @@ public class MySQlConnection {
             InputStream input = new FileInputStream("dbConfig.properties");
             p.load(input);
             connection = DriverManager.getConnection(p.getProperty("url"), p.getProperty("username"), p.getProperty("password"));
-            System.out.println("Ligado à DB");
+            //System.out.println("Ligado à DB");
         } catch (IOException | SQLException e) {
             e.printStackTrace();
             System.out.println("Ocorreu um problema");
